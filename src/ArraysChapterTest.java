@@ -44,17 +44,38 @@ class ArraysChapterTest {
 
     @Test
     public void TestSingleNumber() {
-        assertEquals(2,arraysChapter.singleNumber(new int[]{1, 1,2}));
-        assertEquals(4,arraysChapter.singleNumber(new int[]{4,1,2,1,2}));
-        assertEquals(2,arraysChapter.singleNumberXOR(new int[]{1, 1,2}));
-        assertEquals(4,arraysChapter.singleNumberXOR(new int[]{4,1,2,1,2}));
+        assertEquals(2, arraysChapter.singleNumber(new int[]{1, 1, 2}));
+        assertEquals(4, arraysChapter.singleNumber(new int[]{4, 1, 2, 1, 2}));
+        assertEquals(2, arraysChapter.singleNumberXOR(new int[]{1, 1, 2}));
+        assertEquals(4, arraysChapter.singleNumberXOR(new int[]{4, 1, 2, 1, 2}));
     }
 
     @Test
-    public void TestIntersect(){
-        assertArrayEquals(new int[]{2,3}, arraysChapter.intersect(new int[]{1,2,3}, new int[]{2,3}));
-        assertArrayEquals(new int[]{4,9}, arraysChapter.intersect(new int[]{4,9,5}, new int[]{9,4,9,8,4}));
-
+    public void TestIntersect() {
+        assertArrayEquals(new int[]{2, 3}, arraysChapter.intersect(new int[]{1, 2, 3}, new int[]{2, 3}));
+        assertArrayEquals(new int[]{9, 4}, arraysChapter.intersect(new int[]{4, 9, 5}, new int[]{9, 4, 9, 8, 4}));
     }
 
+    @Test
+    public void TestPlusOne() {
+        assertArrayEquals(new int[]{1, 0, 0}, arraysChapter.plusOne(new int[]{9, 9}));
+        assertArrayEquals(new int[]{1, 0}, arraysChapter.plusOne(new int[]{9}));
+        assertArrayEquals(new int[]{1, 2, 4}, arraysChapter.plusOne(new int[]{1, 2, 3}));
+        assertArrayEquals(new int[]{1, 3}, arraysChapter.plusOne(new int[]{1, 2}));
+        assertArrayEquals(new int[]{4}, arraysChapter.plusOne(new int[]{3}));
+        assertArrayEquals(new int[]{4, 3, 2, 2}, arraysChapter.plusOne(new int[]{4, 3, 2, 1}));
+        assertArrayEquals(new int[]{1, 3, 0}, arraysChapter.plusOne(new int[]{1, 2, 9}));
+    }
+
+    @Test
+    public void TestMoveZeros() {
+        assertArrayEquals(new int[]{1, 3, 12, 0, 0}, arraysChapter.moveZeroes(new int[]{0, 1, 0, 3, 12}));
+        assertArrayEquals(new int[]{1, 3, 12, 0, 0}, arraysChapter.moveZeroes(new int[]{1, 0, 0, 3, 12}));
+        assertArrayEquals(new int[]{0}, arraysChapter.moveZeroes(new int[]{0}));
+
+        assertArrayEquals(new int[]{1, 3, 12, 0, 0}, arraysChapter.moveZeroes2(new int[]{0, 1, 0, 3, 12}));
+        assertArrayEquals(new int[]{1, 3, 12, 0, 0}, arraysChapter.moveZeroes2(new int[]{1, 0, 0, 3, 12}));
+        assertArrayEquals(new int[]{0}, arraysChapter.moveZeroes2(new int[]{0}));
+
+    }
 }

@@ -1,3 +1,5 @@
+import jdk.jshell.execution.JdiDefaultExecutionControl;
+
 import java.util.*;
 
 public class ArraysChapter {
@@ -129,13 +131,83 @@ public class ArraysChapter {
         }
         List<Integer> output = new ArrayList<>();
         for (int num : nums2) {
-            if (map.containsKey(num) && map.get(num) > 0){
+            if (map.containsKey(num) && map.get(num) > 0) {
                 output.add(num);
-                map.put(num, map.get(num)- 1);
+                map.put(num, map.get(num) - 1);
             }
         }
-        return output.stream().mapToInt(Integer::intValue).toArray();
+        int[] arrOutput = new int[output.size()];
+        int k = 0;
+        for (int i : output) {
+            arrOutput[k++] = i;
+        }
+        return arrOutput;
     }
+
+    // 9 == 10
+    // 99 == 100
+
+    /*
+        Best solution with 0ms :D
+     */
+    public int[] plusOne(int[] digits) {
+        int lastIndex = digits.length - 1;
+        while (digits[lastIndex] == 9) {
+            digits[lastIndex] = 0;
+            lastIndex--;
+            if (lastIndex == -1) {
+                int[] output = new int[digits.length + 1];
+                int j = 0;
+                output[j++] = 1;
+                for (int n : digits) {
+                    output[j++] = n;
+                }
+                return output;
+            }
+        }
+        digits[lastIndex] += 1;
+        return digits;
+    }
+
+    public int[] moveZeroes(int[] nums) {
+        int i = 0;
+        int j = 1;
+        while (j < nums.length && nums.length > 1) {
+            if (nums[i] != 0) {
+                i++;
+                j++;
+            } else {
+                if (nums[j] == 0) {
+                    j++;
+                } else {
+                    int tmp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = tmp;
+                    i++;
+                    j++;
+                }
+            }
+        }
+        return nums;
+    }
+
+    public int[] moveZeroes2(int[] nums) {
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int tmp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = tmp;
+                j++;
+            }
+        }
+
+        return nums;
+    }
+
+    //   0 1 0 3 12
+    //
+    //
 
     public static void main(String[] args) {
     }
